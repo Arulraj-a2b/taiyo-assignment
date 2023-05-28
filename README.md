@@ -20,7 +20,7 @@ the server now runs on `http://localhost:3000`
 
 ## Using Tailwind Styles
 
-Tailwind CSS works by scanning all of your HTML files, JavaScript components, and any other templates for class names, generating the corresponding styles and then writing them to a static CSS file.
+Tailwind [CSS](https://tailwindcss.com/docs/guides/create-react-app) works by scanning all of your HTML files, JavaScript components, and any other templates for class names, generating the corresponding styles and then writing them to a static CSS file.
 
 To use this feature follow the below steps.
 
