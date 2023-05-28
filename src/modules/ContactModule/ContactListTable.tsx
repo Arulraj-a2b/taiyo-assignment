@@ -8,7 +8,7 @@ type Props = {
   handleEdit: (a: number) => void;
 };
 
-const ContactList = ({ data, handleDelete, handleEdit }: Props) => {
+const ContactListTable = ({ data, handleDelete, handleEdit }: Props) => {
   return (
     <div className=" rounded w-full bg-white p-4">
       <table className="border-collapse border border-slate-500 w-full bg-white p-4">
@@ -60,4 +60,4 @@ const ContactList = ({ data, handleDelete, handleEdit }: Props) => {
   );
 };
 
-export default ContactList;
+export default ContactListTable;

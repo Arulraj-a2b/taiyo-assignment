@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { FormikHelpers, useFormik } from "formik";
+import { toast } from "react-toastify";
 import NoContact from "./NoContact";
 import CreateContact from "./CreateContact";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../redux/store";
 import { addContact } from "./store/contactReducer";
-import ContactList from "./ContactList";
+import ContactListTable from "./ContactListTable";
 import { isEmpty } from "../../utils/validators";
 
 export type formType = {
@@ -48,9 +49,15 @@ const ContactScreen = () => {
       dispatch(addContact([...data, values]));
       setContactCreate({ open: false, status: "add" });
       formikHelpers.resetForm();
+      toast.success("Contact added successfully", {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        draggable: true,
+      });
     } else {
       let updatedElement = values;
-
       let newArray = data.map((element: any, index: any) => {
         if (index === isEditIndex) {
           return updatedElement;
@@ -60,6 +67,13 @@ const ContactScreen = () => {
       dispatch(addContact(newArray));
       setContactCreate({ open: false, status: "add" });
       formikHelpers.resetForm();
+      toast.success("Contact updated successfully", {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        draggable: true,
+      });
     }
   };
 
@@ -92,6 +106,13 @@ const ContactScreen = () => {
       (_: any, index: number) => index !== indexToRemove
     );
     dispatch(addContact(newArray));
+    toast.success("Contact deleted successfully", {
+      position: "top-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      draggable: true,
+    });
   };
 
   // Contact edit function
@@ -141,7 +162,7 @@ const ContactScreen = () => {
             </button>
           </div>
 
-          <ContactList
+          <ContactListTable
             data={data}
             handleDelete={handleDelete}
             handleEdit={handleEdit}

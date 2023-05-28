@@ -51,6 +51,8 @@ const MapsScreen = () => {
   return (
     <>
       {(isLoading || countriesLoader || historicalLoader) && <Loader />}
+      <p className="text-neutral-950 font-bold text-3xl mb-4">DashBoard</p>
+
       <div className="w-full flex tablet:flex-col">
         <div className={`${tablet ? "" : "w-4/6"}`}>
           <div className="flex tablet:flex-col">

@@ -22,8 +22,9 @@ const casesTypeColors: any = {
 
 // Map Circle helper
 export const showDataOnMap = (data: CovidCountries[], casesType: string) =>
-  data?.map((country) => (
+  data?.map((country, index) => (
     <Circle
+      key={index.toString()}
       center={[country.countryInfo.lat, country.countryInfo.long]}
       color={casesTypeColors[casesType].hex}
       fillColor={casesTypeColors[casesType].hex}
