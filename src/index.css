@@ -26,3 +26,7 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #dfdfdf;
 }
+
+.leaflet-control-attribution {
+  display: none;
+}
