@@ -1,46 +1,54 @@
-# Getting Started with Create React App
+Steps to be followed after cloning the repo:
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Installation
 
-## Available Scripts
+Add the neccesary use node version `18.16.0`
 
-In the project directory, you can run:
+```bash
+yarn
+```
 
-### `yarn start`
+## Starting the Application
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Kindly run start redis in your background. Then run the following commands
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+```bash
+yarn start
+```
 
-### `yarn test`
+the server now runs on `http://localhost:3000`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Using Tailwind Styles
 
-### `yarn build`
+Tailwind CSS works by scanning all of your HTML files, JavaScript components, and any other templates for class names, generating the corresponding styles and then writing them to a static CSS file.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+To use this feature follow the below steps.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```javascript
+<h1 classNames="text-3xl font-bold underline">Hello world!</h1>
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Adding Svg Icons
 
-### `yarn eject`
+Install svgr cli in your system [SVGR CLI](https://react-svgr.com/docs/cli/). Then run the following commands npx @svgr/cli `ICON NAME`. For example if you have a file named `trackIcon.svg` in your current folder then run
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```sh
+npx @svgr/cli SvgHelp.svg
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+in your terminal. Then copy paste the generated react file
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```javascript
+const SvgHelp = () => {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path d="M0 0h24v24H0V0z" fill="none" />
+      <path d="M11 18h2v-2h-2v2zm1-16C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2s2 .9 2 2c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5 0-2.21-1.79-4-4-4z" />
+    </svg>
+  );
+};
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+export default SvgHelp;
+```
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+in the `src/icons` folder, so that you can later import it in your application.

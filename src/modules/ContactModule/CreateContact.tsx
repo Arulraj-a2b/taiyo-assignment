@@ -1,5 +1,6 @@
 import { FormikProps } from "formik";
 import { formType } from "./ContactScreen";
+import { useMediaQuery } from "react-responsive";
 
 type Props = {
   buttonTitle?: string;
@@ -7,14 +8,23 @@ type Props = {
   handleClose: () => void;
 };
 
+// Create and Edit contact component
+
 const CreateContact = ({
   formik,
   buttonTitle = "Save Contact",
   handleClose,
 }: Props) => {
+  // Mobile and Tablet responsive condition
+  const tablet = useMediaQuery({ query: "(max-width: 1000px)" });
+
   return (
-    <div className=" justify-center flex items-center">
-      <div className="flex flex-col  bg-white rounded p-8 w-3/4">
+    <div className={`${tablet ? "" : "justify-center"} flex items-center`}>
+      <div
+        className={`flex flex-col  bg-white rounded p-8 ${
+          tablet ? "w-full" : "w-3/4"
+        }`}
+      >
         <p className="text-xl font-bold">Create Contact</p>
         <div className="mt-4">
           <div className="mb-6">
@@ -55,7 +65,7 @@ const CreateContact = ({
               type="radio"
               onChange={() => formik.setFieldValue("status", "1")}
               name="bordered-radio"
-              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+              className="w-4 h-4 text-teal-600 bg-gray-100 border-gray-300 focus:ring-teal-500 dark:focus:ring-teal-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
             />
             <label
               htmlFor="bordered-radio-1"
@@ -71,7 +81,7 @@ const CreateContact = ({
               type="radio"
               onChange={() => formik.setFieldValue("status", "0")}
               name="bordered-radio"
-              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+              className="w-4 h-4 text-teal-600 bg-gray-100 border-gray-300 focus:ring-teal-500 dark:focus:ring-teal-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
             />
             <label
               htmlFor="bordered-radio-2"
@@ -87,13 +97,13 @@ const CreateContact = ({
           )}
           <button
             onClick={handleClose}
-            className="rounded bg-white  px-4 py-3 text-blue-500 outline outline-blue-500 mt-2 mr-4"
+            className="rounded bg-white  px-4 py-3 text-teal-500 outline outline-teal-500 mt-2 mr-4"
           >
             Cancel
           </button>
           <button
             onClick={() => formik.handleSubmit()}
-            className="rounded bg-blue-500 px-4 py-3 text-white mt-2 outline outline-blue-500"
+            className="rounded bg-teal-500 px-4 py-3 text-white mt-2 outline outline-teal-500"
           >
             {buttonTitle}
           </button>

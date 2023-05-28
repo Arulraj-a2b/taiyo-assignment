@@ -6,6 +6,7 @@ type Props = {
   onClick: () => void;
   isGreen?: boolean;
   isRightMargin?: boolean;
+  isVerticalMargin?: boolean;
 };
 
 const InfoCard = ({
@@ -16,16 +17,17 @@ const InfoCard = ({
   onClick,
   isGreen,
   isRightMargin,
+  isVerticalMargin,
 }: Props) => {
   return (
     <div
       onClick={onClick}
       tabIndex={-1}
       role="button"
-      className={`w-full ${
+      className={`w-full ${isVerticalMargin ? "my-4" : ""} ${
         isRightMargin ? "mr-4" : ""
       } bg-white rounded overflow-hidden shadow-lg flex flex-col px-4 pb-5 border-t-8 ${
-        active ? "border-t-blue-500" : "border-t-white"
+        active ? "border-t-teal-500" : "border-t-white"
       }`}
     >
       <span className="text-gray-500 text-base mt-4">{title}</span>

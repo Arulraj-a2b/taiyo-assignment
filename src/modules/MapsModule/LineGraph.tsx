@@ -52,6 +52,7 @@ type Props = {
   data: any;
   casesType: string;
 };
+
 const LineGraph = ({ casesType, data }: Props) => {
   const [builData, setBuildData] = useState<
     {
@@ -60,6 +61,7 @@ const LineGraph = ({ casesType, data }: Props) => {
     }[]
   >([]);
 
+  // modify the data for Line chart
   const buildChartData = (
     data: { [x: string]: { [x: string]: any }; cases: any },
     caseType: string

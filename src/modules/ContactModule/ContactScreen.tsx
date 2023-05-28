@@ -35,9 +35,11 @@ const ContactScreen = () => {
     };
   });
 
+  // Contact create open function
   const handleCreateContact = () =>
     setContactCreate({ open: true, status: "add" });
 
+  // Contact form submit function
   const handleSubmit = (
     values: formType,
     formikHelpers: FormikHelpers<any>
@@ -61,6 +63,7 @@ const ContactScreen = () => {
     }
   };
 
+  // Form validation
   const validate = (values: formType) => {
     const errors: Partial<formType> = {};
     if (isEmpty(values.firstName)) {
@@ -76,12 +79,14 @@ const ContactScreen = () => {
     return errors;
   };
 
+  // Form handle hook
   const formik = useFormik({
     initialValues,
     onSubmit: handleSubmit,
     validate,
   });
 
+  // Contact delete function
   const handleDelete = (indexToRemove: number) => {
     let newArray = data.filter(
       (_: any, index: number) => index !== indexToRemove
@@ -89,6 +94,7 @@ const ContactScreen = () => {
     dispatch(addContact(newArray));
   };
 
+  // Contact edit function
   const handleEdit = (index: number) => {
     setEditIndex(index);
     setContactCreate({ open: true, status: "edit" });
@@ -97,6 +103,7 @@ const ContactScreen = () => {
     formik.setFieldValue("status", data[index].status);
   };
 
+  // Contact create or edit close function
   const handleCloseContact = () => {
     setContactCreate({ open: false, status: "edit" });
     formik.resetForm();
@@ -105,6 +112,7 @@ const ContactScreen = () => {
   return (
     <div className="h-full">
       {isContactCreate.open ? (
+        // Contact add or edit component
         <CreateContact
           handleClose={handleCloseContact}
           formik={formik}
@@ -116,15 +124,18 @@ const ContactScreen = () => {
         />
       ) : (
         data?.length === 0 && (
+          // No Contact component
           <NoContact handleCreateContact={handleCreateContact} />
         )
       )}
+
+      {/* Contact list table Component */}
       {data.length > 0 && isContactCreate.open === false && (
         <div>
           <div className="justify-end	flex flex-row">
             <button
               onClick={handleCreateContact}
-              className="rounded bg-blue-500 px-4 py-3 text-white mb-2"
+              className="rounded bg-teal-500 px-4 py-3 text-white mb-2"
             >
               Add Contact
             </button>

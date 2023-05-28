@@ -1,5 +1,6 @@
 import numeral from "numeral";
 import { Circle, Popup } from "react-leaflet";
+import { CovidCountries } from "../modules/MapsModule/store/mapScreen.type";
 
 export const prettyPrintStat = (stat: any) =>
   stat ? `+${numeral(stat).format("0.0a")}` : "+0";
@@ -19,14 +20,16 @@ const casesTypeColors: any = {
   },
 };
 
-export const showDataOnMap = (data: any, casesType: string) =>
-  data?.map((country: any) => (
+// Map Circle helper
+export const showDataOnMap = (data: CovidCountries[], casesType: string) =>
+  data?.map((country) => (
     <Circle
       center={[country.countryInfo.lat, country.countryInfo.long]}
       color={casesTypeColors[casesType].hex}
       fillColor={casesTypeColors[casesType].hex}
       fillOpacity={0.4}
       radius={
+        // @ts-ignore:next-line
         Math.sqrt(country[casesType]) * casesTypeColors[casesType].multiplier
       }
     >
@@ -57,7 +60,8 @@ export const showDataOnMap = (data: any, casesType: string) =>
     </Circle>
   ));
 
-export const sortData = (data: any) => {
+// Sort the covid case helper
+export const sortData = (data: CovidCountries[]) => {
   const sortedData = [...data];
   return sortedData?.sort((a, b) => (a.cases > b.cases ? -1 : 1));
 };

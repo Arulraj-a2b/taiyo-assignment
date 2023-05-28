@@ -5,11 +5,13 @@ type Props = {
 };
 const LiveCasesTable = ({ countries }: Props) => {
   return (
-    <div style={{ overflowY: "scroll" }} className="h-3/5 mt-4 mb-8">
+    <div style={{ overflowY: "scroll" }} className="h-3/5 mt-4 mb-4 px-4">
       {countries.map(({ country, cases }: any, index: number) => (
         <tr
           style={{ marginBottom: 4 }}
-          className={`${index % 2 === 0 ? "bg-gray-300" : ""}`}
+          className={`flex w-full justify-between	 p-2 ${
+            index % 2 === 0 ? "bg-gray-300" : ""
+          }`}
         >
           <td>{country}</td>
           <td>
