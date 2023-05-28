@@ -19,6 +19,7 @@ function App() {
             <Routes>
               {/* Contact Screen */}
               <Route path={routes.CONTACT_SCREEN} element={<ContactScreen />} />
+              <Route path={""} element={<ContactScreen />} />
               {/* Map and Chart Screen */}
               <Route path={routes.MAPS_SCREEN} element={<MapsScreen />} />
             </Routes>

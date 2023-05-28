@@ -30,7 +30,9 @@ const MenuList = ({ onClose }: Props) => {
         <Link onClick={onClose} to="/contact" className="my-3 w-full">
           <span
             className={` flex rounded text-white py-2 w-full  hover:bg-teal-500 px-1 ${
-              locattion.pathname === "/contact" ? "bg-teal-600" : ""
+              locattion.pathname === "/contact" || locattion.pathname === "/"
+                ? "bg-teal-600"
+                : ""
             }`}
           >
             Contact
